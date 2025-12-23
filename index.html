@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Straight Path - Islamic Guidance from Quran and Sunnah">
+    <title>The Straight Path - Islamic Guidance</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">الصراط المستقيم</h1>
+            <h2 class="subtitle">The Straight Path</h2>
+            <p class="tagline">"Guide us to the straight path" - Al-Fatiha 1:6</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <button class="nav-btn active" data-section="home">Home</button>
+            <button class="nav-btn" data-section="quran">Quran & Tafseer</button>
+            <button class="nav-btn" data-section="hadith">Hadith Qudsi</button>
+            <button class="nav-btn" data-section="prophet">Prophet's Life</button>
+            <button class="nav-btn" data-section="daily">Daily Guidance</button>
+            <button class="nav-btn" data-section="about">About Islam</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="welcome-card">
+                <h2>Welcome to The Straight Path</h2>
+                <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+                <p class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</p>
+
+                <div class="shahada-box">
+                    <h3>The Declaration of Faith (Shahada)</h3>
+                    <p class="arabic-text">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ</p>
+                    <p class="translation">"I bear witness that there is no deity worthy of worship except Allah, and I bear witness that Muhammad is the Messenger of Allah."</p>
+                    <p class="explanation">This is the declaration that makes one a Muslim - the acknowledgment that Allah is the One True God, and Muhammad (peace be upon him) is His final messenger.</p>
+                </div>
+
+                <div class="pillars-section">
+                    <h3>The Five Pillars of Islam</h3>
+                    <div class="pillars-grid">
+                        <div class="pillar-card">
+                            <h4>1. Shahada (Faith)</h4>
+                            <p>Declaration of faith in Allah and His messenger</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>2. Salah (Prayer)</h4>
+                            <p>Five daily prayers facing Makkah</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>3. Zakah (Charity)</h4>
+                            <p>Giving to those in need</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>4. Sawm (Fasting)</h4>
+                            <p>Fasting during the month of Ramadan</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>5. Hajj (Pilgrimage)</h4>
+                            <p>Pilgrimage to Makkah once in a lifetime</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quran & Tafseer Section -->
+        <section id="quran" class="content-section">
+            <h2>Quran and Tafseer Ibn Kathir</h2>
+            <p class="section-intro">The Holy Quran is the word of Allah revealed to Prophet Muhammad (peace be upon him). Below are selected verses with commentary from the renowned scholar Ibn Kathir.</p>
+
+            <div class="search-box">
+                <input type="text" id="quran-search" placeholder="Search Quran verses...">
+            </div>
+
+            <div id="quran-content" class="verses-container">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Hadith Qudsi Section -->
+        <section id="hadith" class="content-section">
+            <h2>Hadith Qudsi - Sacred Narrations</h2>
+            <p class="section-intro">Hadith Qudsi are the sayings of Prophet Muhammad (peace be upon him) as revealed by Allah, expressed in the Prophet's own words. These are distinct from the Quran but carry divine meaning.</p>
+
+            <div class="search-box">
+                <input type="text" id="hadith-search" placeholder="Search Hadith...">
+            </div>
+
+            <div id="hadith-content" class="hadith-container">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Prophet's Life Section -->
+        <section id="prophet" class="content-section">
+            <h2>Life and Teachings of Prophet Muhammad ﷺ</h2>
+            <p class="section-intro">Learn about the exemplary life of Prophet Muhammad (peace be upon him), the final messenger of Allah, and the moral lessons we can apply in our daily lives.</p>
+
+            <div id="prophet-content" class="lessons-container">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Daily Guidance Section -->
+        <section id="daily" class="content-section">
+            <h2>Daily Islamic Guidance</h2>
+
+            <div class="daily-card">
+                <h3>Verse of the Day</h3>
+                <div id="verse-of-day" class="daily-verse">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+            <div class="daily-card">
+                <h3>Hadith of the Day</h3>
+                <div id="hadith-of-day" class="daily-hadith">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+            <div class="daily-card">
+                <h3>Lesson of the Day</h3>
+                <div id="lesson-of-day" class="daily-lesson">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+            <div class="daily-practices">
+                <h3>Daily Islamic Practices</h3>
+                <ul>
+                    <li>Begin each day with Fajr prayer</li>
+                    <li>Recite at least one page of the Quran</li>
+                    <li>Make dhikr (remembrance of Allah) throughout the day</li>
+                    <li>Perform the five daily prayers on time</li>
+                    <li>Treat others with kindness and compassion</li>
+                    <li>Seek forgiveness (Istighfar) regularly</li>
+                    <li>Give charity, even if it's small</li>
+                    <li>End your day with gratitude to Allah</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- About Islam Section -->
+        <section id="about" class="content-section">
+            <h2>About Islam</h2>
+
+            <div class="about-card">
+                <h3>What is Islam?</h3>
+                <p>Islam is the complete way of life revealed by Allah (God) to humanity through His final prophet, Muhammad (peace be upon him). The word "Islam" means "submission to the will of Allah" and brings peace to those who follow it.</p>
+            </div>
+
+            <div class="about-card">
+                <h3>Core Beliefs</h3>
+                <ul>
+                    <li><strong>Belief in Allah:</strong> The One and Only God, Creator of everything</li>
+                    <li><strong>Belief in Angels:</strong> Allah's creations who worship and serve Him</li>
+                    <li><strong>Belief in Holy Books:</strong> The scriptures revealed by Allah (Torah, Gospel, Quran)</li>
+                    <li><strong>Belief in Prophets:</strong> From Adam to Muhammad (peace be upon them all)</li>
+                    <li><strong>Belief in the Day of Judgment:</strong> When all will be held accountable</li>
+                    <li><strong>Belief in Divine Decree:</strong> Allah's knowledge and control over all things</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <h3>The Purpose of Life</h3>
+                <p>According to Islam, the purpose of human life is to worship Allah alone, live righteously according to His guidance, and prepare for the eternal life in the Hereafter. Allah says in the Quran:</p>
+                <blockquote>
+                    <p class="arabic-text">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ</p>
+                    <p>"And I did not create the jinn and mankind except to worship Me." (Quran 51:56)</p>
+                </blockquote>
+            </div>
+
+            <div class="about-card">
+                <h3>Morality in Islam</h3>
+                <p>Islamic morality is based on the teachings of the Quran and the example (Sunnah) of Prophet Muhammad (peace be upon him). Key moral principles include:</p>
+                <ul>
+                    <li>Honesty and truthfulness in all dealings</li>
+                    <li>Justice and fairness to all people</li>
+                    <li>Compassion and mercy to all of creation</li>
+                    <li>Humility and modesty in behavior</li>
+                    <li>Patience and perseverance in hardship</li>
+                    <li>Gratitude to Allah and kindness to parents</li>
+                    <li>Respect for others' rights and dignity</li>
+                    <li>Avoiding harm to oneself and others</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>May Allah guide us all to the straight path and grant us understanding of His religion.</p>
+            <p class="arabic-text">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</p>
+            <p>"Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire." (Quran 2:201)</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
