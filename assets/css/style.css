@@ -1,0 +1,542 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0d7377;
+    --secondary-color: #14a085;
+    --accent-color: #d4af37;
+    --text-dark: #2c3e50;
+    --text-light: #ecf0f1;
+    --background-light: #f8f9fa;
+    --background-white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-light);
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.95;
+}
+
+/* Navigation */
+.main-nav {
+    background: var(--background-white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 30px;
+}
+
+.main-nav .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+}
+
+.nav-btn {
+    background: var(--background-light);
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.nav-btn.active {
+    background: var(--secondary-color);
+    color: var(--text-light);
+    border-color: var(--secondary-color);
+}
+
+/* Main Content */
+main {
+    padding: 30px 0;
+    min-height: 60vh;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards */
+.welcome-card,
+.about-card,
+.daily-card {
+    background: var(--background-white);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-card:hover,
+.about-card:hover,
+.daily-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.welcome-card h2,
+.about-card h2,
+.daily-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.welcome-card h3,
+.about-card h3,
+.daily-card h3 {
+    color: var(--secondary-color);
+    margin: 20px 0 15px;
+    font-size: 1.5rem;
+}
+
+/* Arabic Text */
+.bismillah {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 30px 0 10px;
+    font-weight: 600;
+}
+
+.bismillah-translation {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.arabic-text {
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin: 20px 0;
+    line-height: 2;
+    font-weight: 600;
+}
+
+.translation {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 15px 0;
+    font-style: italic;
+}
+
+/* Shahada Box */
+.shahada-box {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 30px;
+    border-radius: 12px;
+    margin: 30px 0;
+    border-left: 5px solid var(--secondary-color);
+}
+
+.shahada-box .explanation {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* Pillars Section */
+.pillars-section {
+    margin-top: 40px;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pillar-card {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe6b3 100%);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.pillar-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.pillar-card p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+/* Section Headers */
+.content-section > h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.section-intro {
+    background: var(--background-white);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Search Box */
+.search-box {
+    margin: 25px 0;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(20, 160, 133, 0.1);
+}
+
+/* Verse Card */
+.verse-card {
+    background: var(--background-white);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--secondary-color);
+}
+
+.verse-card .verse-reference {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.verse-card .verse-arabic {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    line-height: 2.2;
+    margin: 15px 0;
+    text-align: right;
+    direction: rtl;
+}
+
+.verse-card .verse-translation {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.verse-card .tafseer {
+    background: var(--background-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.verse-card .tafseer h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.verse-card .tafseer p {
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Hadith Card */
+.hadith-card {
+    background: var(--background-white);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--accent-color);
+}
+
+.hadith-card .hadith-number {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.hadith-card .hadith-text {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    line-height: 1.9;
+    margin: 15px 0;
+    padding: 20px;
+    background: #f0f8ff;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+.hadith-card .hadith-explanation {
+    margin-top: 20px;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Lesson Card */
+.lesson-card {
+    background: var(--background-white);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--primary-color);
+}
+
+.lesson-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.lesson-card .story {
+    background: var(--background-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    line-height: 1.8;
+}
+
+.lesson-card .moral {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-radius: 8px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.lesson-card .moral strong {
+    color: var(--secondary-color);
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    line-height: 1.6;
+}
+
+ul li:before {
+    content: "✓";
+    color: var(--secondary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+blockquote {
+    background: var(--background-light);
+    border-left: 5px solid var(--accent-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+/* Daily Practices */
+.daily-practices {
+    background: var(--background-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+}
+
+.daily-practices h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.daily-practices ul li {
+    font-size: 1.1rem;
+    padding: 12px 0 12px 35px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-light);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 1.05rem;
+}
+
+footer .arabic-text {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .main-nav .container {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bismillah {
+        font-size: 2rem;
+    }
+
+    .arabic-text {
+        font-size: 1.5rem;
+    }
+
+    .verse-card .verse-arabic {
+        font-size: 1.5rem;
+    }
+
+    .content-section > h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .welcome-card,
+    .about-card,
+    .daily-card {
+        padding: 20px;
+    }
+
+    .verse-card,
+    .hadith-card,
+    .lesson-card {
+        padding: 20px;
+    }
+}
