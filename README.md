@@ -30,6 +30,11 @@ The Straight Path is a comprehensive Islamic guidance application that teaches:
 - Daily rotating content for continuous learning
 - Comprehensive explanations from authentic sources
 - Mobile-friendly interface
+- **User Accounts** - Secure registration and authentication
+- **Progress Tracking** - Track your reading of verses, hadith, and lessons
+- **Daily Streak** - Maintain your learning streak with daily activity tracking
+- **Notes System** - Take and organize notes while studying
+- **Personal Dashboard** - View your statistics and achievements
 
 ## Content Sources
 
@@ -80,6 +85,47 @@ The purpose of this application is to:
 - Compression middleware for performance
 - Static file serving with caching
 - Security headers
+
+### Database & Authentication
+- MongoDB with Mongoose ODM
+- JWT-based authentication
+- Secure password hashing with bcryptjs
+- Session management with express-session
+- Progress tracking and statistics
+- Notes system with tagging and search
+
+## Database Setup
+
+The app includes user accounts, progress tracking, and notes functionality powered by MongoDB.
+
+### Quick Setup
+
+1. **Choose a MongoDB option:**
+   - **MongoDB Atlas** (Recommended for production) - Free tier available at [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+   - **Local MongoDB** (For development) - Install from [mongodb.com](https://www.mongodb.com/try/download/community)
+
+2. **Configure environment variables:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your MongoDB connection string
+   ```
+
+3. **Start the application:**
+   ```bash
+   npm install
+   npm start
+   ```
+
+For detailed setup instructions, see [DATABASE_SETUP.md](./DATABASE_SETUP.md)
+
+### Environment Variables
+
+Required environment variables:
+- `MONGODB_URI` - MongoDB connection string
+- `JWT_SECRET` - Secret key for JWT tokens
+- `SESSION_SECRET` - Secret key for sessions
+
+See `.env.example` for full configuration options.
 
 ## Deployment
 
