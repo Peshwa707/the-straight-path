@@ -42,10 +42,22 @@ The app's knowledge base is derived from:
 
 ## How to Use
 
-1. Open `index.html` in any modern web browser
+### Local Usage
+1. Open `index.html` directly in any modern web browser
 2. Navigate between sections using the navigation menu
 3. Use search boxes to find specific topics
 4. Read daily guidance for spiritual growth
+
+### Running with Node.js Server
+```bash
+# Install dependencies
+npm install
+
+# Start the server
+npm start
+
+# Access at http://localhost:3000
+```
 
 ## Purpose
 
@@ -57,10 +69,115 @@ The purpose of this application is to:
 
 ## Technology
 
+### Frontend
 - Pure HTML5, CSS3, and JavaScript
-- No external dependencies required
-- Runs completely offline
 - Responsive design for all devices
+- No build process required
+- Works offline after initial load
+
+### Backend (for deployment)
+- Node.js with Express server
+- Compression middleware for performance
+- Static file serving with caching
+- Security headers
+
+## Deployment
+
+### Deploy to Railway
+
+Railway is a modern deployment platform that makes it easy to deploy web applications. Follow these steps:
+
+#### Quick Deploy
+
+1. **Fork or Clone this repository**
+   ```bash
+   git clone https://github.com/your-username/the-straight-path.git
+   cd the-straight-path
+   ```
+
+2. **Sign up for Railway**
+   - Go to [Railway.app](https://railway.app/)
+   - Sign up with your GitHub account (free tier available)
+
+3. **Deploy from GitHub**
+   - Click "New Project" in Railway dashboard
+   - Select "Deploy from GitHub repo"
+   - Choose the `the-straight-path` repository
+   - Railway will automatically detect the Node.js app and deploy it
+
+4. **Automatic Configuration**
+   - Railway automatically reads `package.json` and runs `npm install`
+   - The app will start using the `npm start` command
+   - Railway assigns a public URL automatically
+
+5. **Access Your App**
+   - Railway provides a public URL: `https://your-app.railway.app`
+   - Share this URL to make the app accessible worldwide
+
+#### Manual Deploy (Railway CLI)
+
+```bash
+# Install Railway CLI
+npm i -g @railway/cli
+
+# Login to Railway
+railway login
+
+# Initialize and deploy
+railway init
+railway up
+
+# Open in browser
+railway open
+```
+
+#### Deploy to Other Platforms
+
+**Heroku:**
+```bash
+# Install Heroku CLI and login
+heroku login
+
+# Create new app
+heroku create the-straight-path
+
+# Deploy
+git push heroku main
+
+# Open app
+heroku open
+```
+
+**Vercel:**
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Follow prompts
+```
+
+**Render:**
+1. Connect your GitHub repository to Render
+2. Create a new "Web Service"
+3. Use these settings:
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+4. Deploy
+
+### Environment Variables
+
+No environment variables are required for basic deployment. The app will run on the port provided by the hosting platform (using `process.env.PORT`).
+
+### Custom Domain (Optional)
+
+After deployment on Railway:
+1. Go to your project settings
+2. Navigate to "Domains"
+3. Add your custom domain
+4. Update your DNS records as instructed
 
 ## Future Enhancements
 
