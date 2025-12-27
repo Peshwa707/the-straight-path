@@ -341,6 +341,25 @@ main {
     font-size: 1.05rem;
 }
 
+/* Jesus verse category styling */
+.verse-card .verse-category {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.jesus-verse {
+    border-left-color: var(--accent-color);
+}
+
 /* Hadith Card */
 .hadith-card {
     background: var(--background-white);
