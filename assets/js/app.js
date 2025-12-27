@@ -11,6 +11,7 @@ function initializeApp() {
     loadQuranContent();
     loadHadithContent();
     loadProphetLessons();
+    loadJesusContent();
     loadDailyGuidance();
     setupSearchFunctionality();
 }
@@ -241,6 +242,140 @@ function createLessonCard(lesson) {
     return card;
 }
 
+// Jesus (Isa) in the Quran - Complete narrative from origin to second coming
+function loadJesusContent() {
+    const jesusContent = document.getElementById('jesus-content');
+
+    const verses = [
+        {
+            category: "Mary's Story - The Chosen Mother",
+            reference: "Surah Al-Imran (3:42-43)",
+            arabic: "وَإِذْ قَالَتِ الْمَلَائِكَةُ يَا مَرْيَمُ إِنَّ اللَّهَ اصْطَفَاكِ وَطَهَّرَكِ وَاصْطَفَاكِ عَلَىٰ نِسَاءِ الْعَالَمِينَ (٤٢) يَا مَرْيَمُ اقْنُتِي لِرَبِّكِ وَاسْجُدِي وَارْكَعِي مَعَ الرَّاكِعِينَ (٤٣)",
+            translation: "And [mention] when the angels said, 'O Mary, indeed Allah has chosen you and purified you and chosen you above the women of the worlds. O Mary, be devoutly obedient to your Lord and prostrate and bow with those who bow [in prayer].'",
+            tafseer: "Ibn Kathir explains that Mary (Maryam) was chosen by Allah and purified from all imperfections. She was selected above all women of her time for the honor of giving birth to Prophet Jesus without a father, as a sign of Allah's power. Allah commanded her to increase in worship and devotion, which prepared her for the great responsibility ahead."
+        },
+        {
+            category: "The Annunciation - Angel's Glad Tidings",
+            reference: "Surah Maryam (19:16-21)",
+            arabic: "وَاذْكُرْ فِي الْكِتَابِ مَرْيَمَ إِذِ انتَبَذَتْ مِنْ أَهْلِهَا مَكَانًا شَرْقِيًّا (١٦) فَاتَّخَذَتْ مِن دُونِهِمْ حِجَابًا فَأَرْسَلْنَا إِلَيْهَا رُوحَنَا فَتَمَثَّلَ لَهَا بَشَرًا سَوِيًّا (١٧) قَالَتْ إِنِّي أَعُوذُ بِالرَّحْمَٰنِ مِنكَ إِن كُنتَ تَقِيًّا (١٨) قَالَ إِنَّمَا أَنَا رَسُولُ رَبِّكِ لِأَهَبَ لَكِ غُلَامًا زَكِيًّا (١٩) قَالَتْ أَنَّىٰ يَكُونُ لِي غُلَامٌ وَلَمْ يَمْسَسْنِي بَشَرٌ وَلَمْ أَكُ بَغِيًّا (٢٠) قَالَ كَذَٰلِكِ قَالَ رَبُّكِ هُوَ عَلَيَّ هَيِّنٌ وَلِنَجْعَلَهُ آيَةً لِّلنَّاسِ وَرَحْمَةً مِّنَّا وَكَانَ أَمْرًا مَّقْضِيًّا (٢١)",
+            translation: "And mention in the Book [the story of] Mary, when she withdrew from her family to a place toward the east. And she took, in seclusion from them, a screen. Then We sent to her Our Angel [Gabriel], and he represented himself to her as a well-proportioned man. She said, 'Indeed, I seek refuge in the Most Merciful from you, [so leave me], if you should be fearing of Allah.' He said, 'I am only the messenger of your Lord to give you [news of] a pure boy.' She said, 'How can I have a boy while no man has touched me and I have not been unchaste?' He said, 'Thus [it will be]; your Lord says, It is easy for Me, and We will make him a sign to the people and a mercy from Us. And it is a matter [already] decreed.'",
+            tafseer: "Ibn Kathir explains that when the angel Gabriel appeared to Mary in human form, she sought refuge in Allah, showing her piety and chastity. The angel informed her that Allah would grant her a son without a father, as a miraculous sign. Mary questioned how this could be, as she was unmarried and pure. The angel confirmed that nothing is difficult for Allah, and Jesus would be a sign for all people and a mercy from Allah."
+        },
+        {
+            category: "The Miraculous Birth",
+            reference: "Surah Maryam (19:22-26)",
+            arabic: "فَحَمَلَتْهُ فَانتَبَذَتْ بِهِ مَكَانًا قَصِيًّا (٢٢) فَأَجَاءَهَا الْمَخَاضُ إِلَىٰ جِذْعِ النَّخْلَةِ قَالَتْ يَا لَيْتَنِي مِتُّ قَبْلَ هَٰذَا وَكُنتُ نَسْيًا مَّنسِيًّا (٢٣) فَنَادَاهَا مِن تَحْتِهَا أَلَّا تَحْزَنِي قَدْ جَعَلَ رَبُّكِ تَحْتَكِ سَرِيًّا (٢٤) وَهُزِّي إِلَيْكِ بِجِذْعِ النَّخْلَةِ تُسَاقِطْ عَلَيْكِ رُطَبًا جَنِيًّا (٢٥) فَكُلِي وَاشْرَبِي وَقَرِّي عَيْنًا فَإِمَّا تَرَيِنَّ مِنَ الْبَشَرِ أَحَدًا فَقُولِي إِنِّي نَذَرْتُ لِلرَّحْمَٰنِ صَوْمًا فَلَنْ أُكَلِّمَ الْيَوْمَ إِنسِيًّا (٢٦)",
+            translation: "So she conceived him, and she withdrew with him to a remote place. And the pains of childbirth drove her to the trunk of a palm tree. She said, 'Oh, I wish I had died before this and was in oblivion, forgotten.' But he called her from below her, 'Do not grieve; your Lord has provided beneath you a stream. And shake toward you the trunk of the palm tree; it will drop upon you ripe, fresh dates. So eat and drink and be contented. And if you see from among humanity anyone, say, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'",
+            tafseer: "Ibn Kathir explains that Mary withdrew to a distant place when she was about to give birth, fearing people's accusations. In her distress, she wished for death rather than face slander. Allah comforted her through the infant Jesus or the angel, providing her with fresh water and dates. She was instructed to maintain a fast of silence if questioned, allowing Jesus himself to defend her honor."
+        },
+        {
+            category: "The Infant Speaks - First Miracle",
+            reference: "Surah Maryam (19:27-33)",
+            arabic: "فَأَتَتْ بِهِ قَوْمَهَا تَحْمِلُهُ قَالُوا يَا مَرْيَمُ لَقَدْ جِئْتِ شَيْئًا فَرِيًّا (٢٧) يَا أُخْتَ هَارُونَ مَا كَانَ أَبُوكِ امْرَأَ سَوْءٍ وَمَا كَانَتْ أُمُّكِ بَغِيًّا (٢٨) فَأَشَارَتْ إِلَيْهِ قَالُوا كَيْفَ نُكَلِّمُ مَن كَانَ فِي الْمَهْدِ صَبِيًّا (٢٩) قَالَ إِنِّي عَبْدُ اللَّهِ آتَانِيَ الْكِتَابَ وَجَعَلَنِي نَبِيًّا (٣٠) وَجَعَلَنِي مُبَارَكًا أَيْنَ مَا كُنتُ وَأَوْصَانِي بِالصَّلَاةِ وَالزَّكَاةِ مَا دُمْتُ حَيًّا (٣١) وَبَرًّا بِوَالِدَتِي وَلَمْ يَجْعَلْنِي جَبَّارًا شَقِيًّا (٣٢) وَالسَّلَامُ عَلَيَّ يَوْمَ وُلِدتُّ وَيَوْمَ أَمُوتُ وَيَوْمَ أُبْعَثُ حَيًّا (٣٣)",
+            translation: "Then she brought him to her people, carrying him. They said, 'O Mary, you have certainly done a thing unprecedented. O sister of Aaron, your father was not a man of evil, nor was your mother unchaste.' So she pointed to him. They said, 'How can we speak to one who is in the cradle a child?' [Jesus] said, 'Indeed, I am the servant of Allah. He has given me the Scripture and made me a prophet. And He has made me blessed wherever I am and has enjoined upon me prayer and zakah as long as I remain alive. And [made me] dutiful to my mother, and He has not made me a wretched tyrant. And peace is on me the day I was born and the day I will die and the day I am raised alive.'",
+            tafseer: "Ibn Kathir explains this as one of the greatest miracles - the infant Jesus speaking from the cradle. When Mary's people accused her of wrongdoing, she pointed to the baby, and miraculously, he spoke in her defense. Jesus's first words were a declaration of servitude to Allah, not divinity. He proclaimed his prophethood, his mission to establish prayer and charity, and prophesied his own death and resurrection. This speech cleared Mary's name and established Jesus's status as a prophet from birth."
+        },
+        {
+            category: "Jesus's Divine Mission",
+            reference: "Surah Al-Imran (3:45-51)",
+            arabic: "إِذْ قَالَتِ الْمَلَائِكَةُ يَا مَرْيَمُ إِنَّ اللَّهَ يُبَشِّرُكِ بِكَلِمَةٍ مِّنْهُ اسْمُهُ الْمَسِيحُ عِيسَى ابْنُ مَرْيَمَ وَجِيهًا فِي الدُّنْيَا وَالْآخِرَةِ وَمِنَ الْمُقَرَّبِينَ (٤٥) وَيُكَلِّمُ النَّاسَ فِي الْمَهْدِ وَكَهْلًا وَمِنَ الصَّالِحِينَ (٤٦) قَالَتْ رَبِّ أَنَّىٰ يَكُونُ لِي وَلَدٌ وَلَمْ يَمْسَسْنِي بَشَرٌ قَالَ كَذَٰلِكِ اللَّهُ يَخْلُقُ مَا يَشَاءُ إِذَا قَضَىٰ أَمْرًا فَإِنَّمَا يَقُولُ لَهُ كُن فَيَكُونُ (٤٧) وَيُعَلِّمُهُ الْكِتَابَ وَالْحِكْمَةَ وَالتَّوْرَاةَ وَالْإِنجِيلَ (٤٨) وَرَسُولًا إِلَىٰ بَنِي إِسْرَائِيلَ",
+            translation: "[And mention] when the angels said, 'O Mary, indeed Allah gives you good tidings of a word from Him, whose name will be the Messiah, Jesus, the son of Mary - distinguished in this world and the Hereafter and among those brought near [to Allah]. He will speak to the people in the cradle and in maturity and will be of the righteous.' She said, 'My Lord, how will I have a child when no man has touched me?' [The angel] said, 'Such is Allah; He creates what He wills. When He decrees a matter, He only says to it, Be, and it is.' And He will teach him writing and wisdom and the Torah and the Gospel. And [make him] a messenger to the Children of Israel...'",
+            tafseer: "Ibn Kathir explains that Jesus is called 'a word from Allah' because he was created by Allah's command 'Be,' without a father. He is titled Al-Masih (the Messiah) and honored in both this world and the Hereafter. Allah taught him the previous scriptures (Torah) and revealed to him the Gospel (Injeel). He was sent specifically to the Children of Israel to call them back to monotheism."
+        },
+        {
+            category: "The Miracles Given to Jesus",
+            reference: "Surah Al-Imran (3:49)",
+            arabic: "أَنِّي قَدْ جِئْتُكُم بِآيَةٍ مِّن رَّبِّكُمْ أَنِّي أَخْلُقُ لَكُم مِّنَ الطِّينِ كَهَيْئَةِ الطَّيْرِ فَأَنفُخُ فِيهِ فَيَكُونُ طَيْرًا بِإِذْنِ اللَّهِ وَأُبْرِئُ الْأَكْمَهَ وَالْأَبْرَصَ وَأُحْيِي الْمَوْتَىٰ بِإِذْنِ اللَّهِ وَأُنَبِّئُكُم بِمَا تَأْكُلُونَ وَمَا تَدَّخِرُونَ فِي بُيُوتِكُمْ إِنَّ فِي ذَٰلِكَ لَآيَةً لَّكُمْ إِن كُنتُم مُّؤْمِنِينَ",
+            translation: "[Jesus said] 'Indeed I have come to you with a sign from your Lord in that I design for you from clay [that which is] like the form of a bird, then I breathe into it and it becomes a bird by permission of Allah. And I cure the blind and the leper, and I give life to the dead - by permission of Allah. And I inform you of what you eat and what you store in your houses. Indeed in that is a sign for you, if you are believers.'",
+            tafseer: "Ibn Kathir emphasizes that all of Jesus's miracles were performed 'by permission of Allah' - not by his own power, but as signs from Allah. The miracle of creating a bird from clay parallels Adam's creation from clay, demonstrating Allah's power. Healing the blind and lepers, raising the dead, and knowing the unseen were extraordinary miracles given to Jesus to prove his prophethood. However, Jesus repeatedly attributed these powers to Allah, not to himself."
+        },
+        {
+            category: "Jesus's Message - Confirming Previous Scripture",
+            reference: "Surah Al-Imran (3:50)",
+            arabic: "وَمُصَدِّقًا لِّمَا بَيْنَ يَدَيَّ مِنَ التَّوْرَاةِ وَلِأُحِلَّ لَكُم بَعْضَ الَّذِي حُرِّمَ عَلَيْكُمْ وَجِئْتُكُم بِآيَةٍ مِّن رَّبِّكُمْ فَاتَّقُوا اللَّهَ وَأَطِيعُونِ",
+            translation: "And [I have come] confirming what was before me of the Torah and to make lawful for you some of what was forbidden to you. And I have come to you with a sign from your Lord, so fear Allah and obey me.",
+            tafseer: "Ibn Kathir explains that Jesus came to confirm the Torah, not to abolish it, but to clarify its true teachings and remove some of the extra burdens that had been added. His mission was to call people back to pure monotheism and righteous living. He commanded them to fear Allah and obey him as Allah's messenger."
+        },
+        {
+            category: "Worship Allah Alone",
+            reference: "Surah Al-Imran (3:51)",
+            arabic: "إِنَّ اللَّهَ رَبِّي وَرَبُّكُمْ فَاعْبُدُوهُ هَٰذَا صِرَاطٌ مُّسْتَقِيمٌ",
+            translation: "Indeed, Allah is my Lord and your Lord, so worship Him. That is the straight path.",
+            tafseer: "Ibn Kathir emphasizes this verse as the core of Jesus's message: pure monotheism. Jesus declared that Allah is his Lord just as He is everyone else's Lord, commanding worship of Allah alone. This directly refutes the later Christian doctrine of Jesus's divinity. The straight path that Jesus preached was the same path of all prophets - submission to the One God."
+        },
+        {
+            category: "The Table from Heaven",
+            reference: "Surah Al-Ma'idah (5:112-115)",
+            arabic: "إِذْ قَالَ الْحَوَارِيُّونَ يَا عِيسَى ابْنَ مَرْيَمَ هَلْ يَسْتَطِيعُ رَبُّكَ أَن يُنَزِّلَ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ قَالَ اتَّقُوا اللَّهَ إِن كُنتُم مُّؤْمِنِينَ (١١٢) قَالُوا نُرِيدُ أَن نَّأْكُلَ مِنْهَا وَتَطْمَئِنَّ قُلُوبُنَا وَنَعْلَمَ أَن قَدْ صَدَقْتَنَا وَنَكُونَ عَلَيْهَا مِنَ الشَّاهِدِينَ (١١٣) قَالَ عِيسَى ابْنُ مَرْيَمَ اللَّهُمَّ رَبَّنَا أَنزِلْ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ تَكُونُ لَنَا عِيدًا لِّأَوَّلِنَا وَآخِرِنَا وَآيَةً مِّنكَ وَارْزُقْنَا وَأَنتَ خَيْرُ الرَّازِقِينَ (١١٤) قَالَ اللَّهُ إِنِّي مُنَزِّلُهَا عَلَيْكُمْ فَمَن يَكْفُرْ بَعْدُ مِنكُمْ فَإِنِّي أُعَذِّبُهُ عَذَابًا لَّا أُعَذِّبُهُ أَحَدًا مِّنَ الْعَالَمِينَ (١١٥)",
+            translation: "[And remember] when the disciples said, 'O Jesus, Son of Mary, can your Lord send down to us a table [spread with food] from the heaven?' [Jesus] said, 'Fear Allah, if you should be believers.' They said, 'We wish to eat from it and let our hearts be reassured and know that you have been truthful to us and be among its witnesses.' Said Jesus, the son of Mary, 'O Allah, our Lord, send down to us a table from the heaven to be for us a festival for the first of us and the last of us and a sign from You. And provide for us, and You are the best of providers.' Allah said, 'Indeed, I will send it down to you, but whoever disbelieves afterwards from among you - then indeed will I punish him with a punishment by which I have not punished anyone among the worlds.'",
+            tafseer: "Ibn Kathir explains that the disciples asked Jesus to request a miraculous meal from heaven as a sign. Jesus first counseled them to have faith without demanding signs. When they persisted, he prayed to Allah, calling Him 'our Lord' and acknowledging Allah as the provider. Allah granted the request but warned of severe punishment for those who would disbelieve after witnessing such a clear miracle. This story demonstrates Jesus's role as an intermediary who prays to Allah, not as someone with independent divine power."
+        },
+        {
+            category: "Refutation of False Beliefs - Jesus is Not Divine",
+            reference: "Surah Al-Ma'idah (5:72-75)",
+            arabic: "لَقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ هُوَ الْمَسِيحُ ابْنُ مَرْيَمَ وَقَالَ الْمَسِيحُ يَا بَنِي إِسْرَائِيلَ اعْبُدُوا اللَّهَ رَبِّي وَرَبَّكُمْ إِنَّهُ مَن يُشْرِكْ بِاللَّهِ فَقَدْ حَرَّمَ اللَّهُ عَلَيْهِ الْجَنَّةَ وَمَأْوَاهُ النَّارُ وَمَا لِلظَّالِمِينَ مِنْ أَنصَارٍ (٧٢) لَّقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ ثَالِثُ ثَلَاثَةٍ وَمَا مِنْ إِلَٰهٍ إِلَّا إِلَٰهٌ وَاحِدٌ (٧٣) مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ وَأُمُّهُ صِدِّيقَةٌ كَانَا يَأْكُلَانِ الطَّعَامَ (٧٥)",
+            translation: "They have certainly disbelieved who say, 'Allah is the Messiah, the son of Mary' while the Messiah has said, 'O Children of Israel, worship Allah, my Lord and your Lord.' Indeed, he who associates others with Allah - Allah has forbidden him Paradise, and his refuge is the Fire. And there are not for the wrongdoers any helpers. They have certainly disbelieved who say, 'Allah is the third of three.' And there is no god except one God... The Messiah, son of Mary, was not but a messenger; [other] messengers have passed on before him. And his mother was a supporter of truth. They both used to eat food...",
+            tafseer: "Ibn Kathir strongly refutes the Christian doctrines of Jesus's divinity and the Trinity. The Quran states that Jesus himself commanded worship of Allah alone. Those who claim Jesus is God or part of a Trinity have committed disbelief. The proof of Jesus's mortality is simple: he and his mother ate food, meaning they were dependent on sustenance like all created beings. Allah is beyond such needs. Jesus was a noble messenger, but still a human servant of Allah."
+        },
+        {
+            category: "Jesus Did Not Die - He Was Raised to Allah",
+            reference: "Surah An-Nisa (4:157-158)",
+            arabic: "وَقَوْلِهِمْ إِنَّا قَتَلْنَا الْمَسِيحَ عِيسَى ابْنَ مَرْيَمَ رَسُولَ اللَّهِ وَمَا قَتَلُوهُ وَمَا صَلَبُوهُ وَلَٰكِن شُبِّهَ لَهُمْ وَإِنَّ الَّذِينَ اخْتَلَفُوا فِيهِ لَفِي شَكٍّ مِّنْهُ مَا لَهُم بِهِ مِنْ عِلْمٍ إِلَّا اتِّبَاعَ الظَّنِّ وَمَا قَتَلُوهُ يَقِينًا (١٥٧) بَل رَّفَعَهُ اللَّهُ إِلَيْهِ وَكَانَ اللَّهُ عَزِيزًا حَكِيمًا (١٥٨)",
+            translation: "And [for] their saying, 'Indeed, we have killed the Messiah, Jesus, the son of Mary, the messenger of Allah.' And they did not kill him, nor did they crucify him; but [another] was made to resemble him to them. And indeed, those who differ over it are in doubt about it. They have no knowledge of it except the following of assumption. And they did not kill him, for certain. Rather, Allah raised him to Himself. And ever is Allah Exalted in Might and Wise.",
+            tafseer: "Ibn Kathir explains this crucial verse: Jesus was not crucified or killed. Instead, Allah made someone else appear like Jesus, and that person was crucified while Jesus was raised to Allah. This is a matter of certain knowledge from the Quran. The disagreements among people about Jesus's fate only prove their uncertainty. Allah saved His prophet from the humiliation his enemies planned, raising him bodily and spiritually to the heavens. Jesus is alive with Allah and will return."
+        },
+        {
+            category: "Jesus as a Sign of the Hour",
+            reference: "Surah Az-Zukhruf (43:61)",
+            arabic: "وَإِنَّهُ لَعِلْمٌ لِّلسَّاعَةِ فَلَا تَمْتَرُنَّ بِهَا وَاتَّبِعُونِ هَٰذَا صِرَاطٌ مُّسْتَقِيمٌ",
+            translation: "And indeed, Jesus will be [a sign for] knowledge of the Hour, so be not in doubt of it, and follow Me. This is a straight path.",
+            tafseer: "Ibn Kathir and other scholars explain this verse as referring to Jesus's second coming before the Day of Judgment. Jesus's return to earth is one of the major signs of the approaching Hour. When he returns, it will remove all doubt about the reality of the Day of Judgment. He will break the cross, kill the swine, abolish the jizyah, and rule with justice according to Islamic law. All People of the Book will believe in him before his death."
+        },
+        {
+            category: "The Day of Judgment - Jesus Will Testify",
+            reference: "Surah Al-Ma'idah (5:116-118)",
+            arabic: "وَإِذْ قَالَ اللَّهُ يَا عِيسَى ابْنَ مَرْيَمَ أَأَنتَ قُلْتَ لِلنَّاسِ اتَّخِذُونِي وَأُمِّيَ إِلَٰهَيْنِ مِن دُونِ اللَّهِ قَالَ سُبْحَانَكَ مَا يَكُونُ لِي أَنْ أَقُولَ مَا لَيْسَ لِي بِحَقٍّ إِن كُنتُ قُلْتُهُ فَقَدْ عَلِمْتَهُ تَعْلَمُ مَا فِي نَفْسِي وَلَا أَعْلَمُ مَا فِي نَفْسِكَ إِنَّكَ أَنتَ عَلَّامُ الْغُيُوبِ (١١٦) مَا قُلْتُ لَهُمْ إِلَّا مَا أَمَرْتَنِي بِهِ أَنِ اعْبُدُوا اللَّهَ رَبِّي وَرَبَّكُمْ وَكُنتُ عَلَيْهِمْ شَهِيدًا مَّا دُمْتُ فِيهِمْ فَلَمَّا تَوَفَّيْتَنِي كُنتَ أَنتَ الرَّقِيبَ عَلَيْهِمْ وَأَنتَ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ (١١٧) إِن تُعَذِّبْهُمْ فَإِنَّهُمْ عِبَادُكَ وَإِن تَغْفِرْ لَهُمْ فَإِنَّكَ أَنتَ الْعَزِيزُ الْحَكِيمُ (١١٨)",
+            translation: "And [beware the Day] when Allah will say, 'O Jesus, Son of Mary, did you say to the people, Take me and my mother as deities besides Allah?' He will say, 'Exalted are You! It was not for me to say that to which I have no right. If I had said it, You would have known it. You know what is within myself, and I do not know what is within Yourself. Indeed, it is You who is Knower of the unseen. I said not to them except what You commanded me - to worship Allah, my Lord and your Lord. And I was a witness over them as long as I was among them; but when You took me up, You were the Observer over them, and You are, over all things, Witness. If You should punish them - indeed they are Your servants; but if You forgive them - indeed it is You who is the Exalted in Might, the Wise.'",
+            tafseer: "Ibn Kathir explains this powerful scene on the Day of Judgment. Allah will question Jesus about whether he told people to worship him and his mother. Jesus will completely disavow this false doctrine, declaring Allah's perfection and stating that he only commanded what Allah ordered: worship of Allah alone. Jesus will testify that he preached pure monotheism while among his people, but after Allah raised him, he has no knowledge of what they innovated. This verse proves that Jesus never claimed divinity and will be the first to reject such claims on Judgment Day."
+        },
+        {
+            category: "Comparison with Adam - Both Created by Allah's Command",
+            reference: "Surah Al-Imran (3:59-60)",
+            arabic: "إِنَّ مَثَلَ عِيسَىٰ عِندَ اللَّهِ كَمَثَلِ آدَمَ خَلَقَهُ مِن تُرَابٍ ثُمَّ قَالَ لَهُ كُن فَيَكُونُ (٥٩) الْحَقُّ مِن رَّبِّكَ فَلَا تَكُن مِّنَ الْمُمْتَرِينَ (٦٠)",
+            translation: "Indeed, the example of Jesus to Allah is like that of Adam. He created Him from dust; then He said to him, 'Be,' and he was. The truth is from your Lord, so do not be among the doubters.",
+            tafseer: "Ibn Kathir explains this profound comparison: if Jesus is considered divine because he was born without a father, then Adam has an even stronger claim, as he was created without either parent. Yet no one claims Adam is divine. This logical argument demolishes the reasoning behind Jesus's divination. Both Jesus and Adam were created by Allah's command 'Be,' demonstrating that miraculous creation does not imply divinity. This is the truth from Allah, and there should be no doubt about it."
+        },
+        {
+            category: "Jesus's Nature - A Word and Spirit from Allah",
+            reference: "Surah An-Nisa (4:171)",
+            arabic: "يَا أَهْلَ الْكِتَابِ لَا تَغْلُوا فِي دِينِكُمْ وَلَا تَقُولُوا عَلَى اللَّهِ إِلَّا الْحَقَّ إِنَّمَا الْمَسِيحُ عِيسَى ابْنُ مَرْيَمَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَىٰ مَرْيَمَ وَرُوحٌ مِّنْهُ فَآمِنُوا بِاللَّهِ وَرُسُلِهِ وَلَا تَقُولُوا ثَلَاثَةٌ انتَهُوا خَيْرًا لَّكُمْ إِنَّمَا اللَّهُ إِلَٰهٌ وَاحِدٌ سُبْحَانَهُ أَن يَكُونَ لَهُ وَلَدٌ",
+            translation: "O People of the Scripture, do not commit excess in your religion or say about Allah except the truth. The Messiah, Jesus, the son of Mary, was but a messenger of Allah and His word which He directed to Mary and a spirit from Him. So believe in Allah and His messengers. And do not say, 'Three'; desist - it is better for you. Indeed, Allah is but one God. Exalted is He above having a son.",
+            tafseer: "Ibn Kathir explains that this verse directly addresses Christians, warning them not to exaggerate in their religion. Jesus is called 'a word' because he was created by Allah's word 'Be,' and 'a spirit from Him' meaning a soul created by Allah - not part of Allah's essence. The titles 'word' and 'spirit' are honors, not indicators of divinity. The verse firmly rejects the Trinity and the concept of Allah having a son, declaring that Allah is One, far above such human concepts. Believing in Jesus as a prophet and messenger is true faith; anything beyond that is excess and falsehood."
+        }
+    ];
+
+    verses.forEach(verse => {
+        const verseCard = createJesusVerseCard(verse);
+        jesusContent.appendChild(verseCard);
+    });
+}
+
+function createJesusVerseCard(verse) {
+    const card = document.createElement('div');
+    card.className = 'verse-card jesus-verse';
+    card.innerHTML = `
+        <div class="verse-category">${verse.category}</div>
+        <div class="verse-reference">${verse.reference}</div>
+        <div class="verse-arabic">${verse.arabic}</div>
+        <div class="verse-translation">${verse.translation}</div>
+        <div class="tafseer">
+            <h4>Tafseer Ibn Kathir:</h4>
+            <p>${verse.tafseer}</p>
+        </div>
+    `;
+    return card;
+}
+
 // Daily guidance - rotate content
 function loadDailyGuidance() {
     const verseOfDay = document.getElementById('verse-of-day');
@@ -294,16 +429,23 @@ function loadDailyGuidance() {
 function setupSearchFunctionality() {
     const quranSearch = document.getElementById('quran-search');
     const hadithSearch = document.getElementById('hadith-search');
+    const jesusSearch = document.getElementById('jesus-search');
 
     if (quranSearch) {
         quranSearch.addEventListener('input', function(e) {
-            filterContent('.verse-card', e.target.value);
+            filterContent('.verse-card:not(.jesus-verse)', e.target.value);
         });
     }
 
     if (hadithSearch) {
         hadithSearch.addEventListener('input', function(e) {
             filterContent('.hadith-card', e.target.value);
+        });
+    }
+
+    if (jesusSearch) {
+        jesusSearch.addEventListener('input', function(e) {
+            filterContent('.jesus-verse', e.target.value);
         });
     }
 }
