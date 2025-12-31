@@ -12,6 +12,8 @@ function initializeApp() {
     loadHadithContent();
     loadProphetLessons();
     loadJesusContent();
+    loadSalahGuide();
+    loadWuduGuide();
     loadDailyGuidance();
     setupSearchFunctionality();
 }
@@ -373,6 +375,402 @@ function createJesusVerseCard(verse) {
             <p>${verse.tafseer}</p>
         </div>
     `;
+    return card;
+}
+
+// How to Pray Salah - Complete Prayer Guide
+function loadSalahGuide() {
+    const salahContent = document.getElementById('salah-content');
+
+    const prayerIntro = `
+        <div class="prayer-intro-card">
+            <h3>The Five Daily Prayers</h3>
+            <div class="prayer-times">
+                <div class="prayer-time-item">
+                    <strong>Fajr:</strong> Dawn prayer (2 rakats)
+                </div>
+                <div class="prayer-time-item">
+                    <strong>Dhuhr:</strong> Midday prayer (4 rakats)
+                </div>
+                <div class="prayer-time-item">
+                    <strong>Asr:</strong> Afternoon prayer (4 rakats)
+                </div>
+                <div class="prayer-time-item">
+                    <strong>Maghrib:</strong> Sunset prayer (3 rakats)
+                </div>
+                <div class="prayer-time-item">
+                    <strong>Isha:</strong> Night prayer (4 rakats)
+                </div>
+            </div>
+            <p class="prayer-note"><strong>Note:</strong> This guide shows you how to pray 2 rakats. For prayers with more rakats, simply repeat the rakat sequence.</p>
+        </div>
+    `;
+
+    const steps = [
+        {
+            number: 1,
+            title: "Make Intention (Niyyah)",
+            description: "Stand facing the Qiblah (direction of Kaaba in Makkah) and make the intention in your heart to pray the specific prayer (e.g., 'I intend to pray 2 rakats of Fajr for Allah').",
+            note: "The intention is in the heart; you don't need to say it out loud.",
+            arabic: "",
+            transliteration: "",
+            translation: ""
+        },
+        {
+            number: 2,
+            title: "Raise Hands and Say Takbir",
+            description: "Raise both hands up to your shoulders or ears with palms facing the Qiblah and say the opening Takbir.",
+            arabic: "اللَّهُ أَكْبَرُ",
+            transliteration: "Allahu Akbar",
+            translation: "Allah is the Greatest",
+            note: "This marks the start of the prayer. After this, you cannot speak, eat, drink, or do anything except the acts of prayer."
+        },
+        {
+            number: 3,
+            title: "Place Hands on Chest",
+            description: "Place your right hand over your left hand on your chest. Women may place hands at chest level as well.",
+            note: "Keep your eyes focused on the place where you will prostrate."
+        },
+        {
+            number: 4,
+            title: "Opening Supplication (Optional)",
+            description: "Recite the opening supplication (Dua Al-Istiftah):",
+            arabic: "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ",
+            transliteration: "Subhanaka Allahumma wa bihamdika, wa tabarakasmuka, wa ta'ala jadduka, wa la ilaha ghayruk",
+            translation: "Glory is to You O Allah, and praise. Blessed is Your Name and Exalted is Your Majesty. There is none worthy of worship but You."
+        },
+        {
+            number: 5,
+            title: "Seek Refuge from Satan",
+            description: "Silently seek refuge in Allah from Satan:",
+            arabic: "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+            transliteration: "A'udhu billahi min ash-shaytan ir-rajeem",
+            translation: "I seek refuge in Allah from Satan, the accursed."
+        },
+        {
+            number: 6,
+            title: "Recite Bismillah",
+            description: "Recite Bismillah:",
+            arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            transliteration: "Bismillah ir-Rahman ir-Raheem",
+            translation: "In the name of Allah, the Most Gracious, the Most Merciful"
+        },
+        {
+            number: 7,
+            title: "Recite Surah Al-Fatiha",
+            description: "Recite Surah Al-Fatiha (The Opening) - this is obligatory in every rakat:",
+            arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ (١) الرَّحْمَٰنِ الرَّحِيمِ (٢) مَالِكِ يَوْمِ الدِّينِ (٣) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٤) اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ (٥) صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ (٦)",
+            transliteration: "Alhamdu lillahi rabbil 'alameen. Ar-Rahman ir-Raheem. Maliki yawmid-deen. Iyyaka na'budu wa iyyaka nasta'een. Ihdinas-siratal mustaqeem. Siratal-ladhina an'amta 'alayhim ghayril-maghdubi 'alayhim walad-dalleen.",
+            translation: "All praise is due to Allah, Lord of all the worlds. The Most Gracious, the Most Merciful. Master of the Day of Judgment. You alone we worship, and You alone we ask for help. Guide us to the straight path. The path of those upon whom You have bestowed favor, not of those who have evoked Your anger or of those who are astray.",
+            note: "Say 'Ameen' (Amen) softly after finishing Al-Fatiha."
+        },
+        {
+            number: 8,
+            title: "Recite Another Surah",
+            description: "Recite any other Surah or verses from the Quran. Common choices for beginners:",
+            arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ (١) اللَّهُ الصَّمَدُ (٢) لَمْ يَلِدْ وَلَمْ يُولَدْ (٣) وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ (٤)",
+            transliteration: "Qul huwa Allahu ahad. Allahu samad. Lam yalid wa lam yoolad. Wa lam yakun lahu kufuwan ahad.",
+            translation: "Say: He is Allah, the One. Allah, the Eternal Refuge. He neither begets nor is born. Nor is there to Him any equivalent. (Surah Al-Ikhlas 112:1-4)",
+            note: "This step is only in the first two rakats of each prayer."
+        },
+        {
+            number: 9,
+            title: "Perform Ruku (Bowing)",
+            description: "Say 'Allahu Akbar' and bow down, placing your hands on your knees. Keep your back straight and head in line with your back. In this position, say:",
+            arabic: "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+            transliteration: "Subhana Rabbiyal Adheem",
+            translation: "Glory is to my Lord, the Most Great",
+            note: "Repeat this at least 3 times. You can say it more times."
+        },
+        {
+            number: 10,
+            title: "Rise from Ruku",
+            description: "Stand up straight while saying:",
+            arabic: "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ",
+            transliteration: "Sami' Allahu liman hamidah",
+            translation: "Allah hears those who praise Him",
+            note: "Then say while standing:"
+        },
+        {
+            number: 10.5,
+            title: "Standing After Ruku",
+            description: "While standing upright, say:",
+            arabic: "رَبَّنَا وَلَكَ الْحَمْدُ",
+            transliteration: "Rabbana wa lakal hamd",
+            translation: "Our Lord, to You is all praise"
+        },
+        {
+            number: 11,
+            title: "First Prostration (Sujud)",
+            description: "Say 'Allahu Akbar' and prostrate with your forehead, nose, both palms, both knees, and toes of both feet touching the ground. Your elbows should be raised off the ground. In this position, say:",
+            arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى",
+            transliteration: "Subhana Rabbiyal A'la",
+            translation: "Glory is to my Lord, the Most High",
+            note: "Repeat at least 3 times."
+        },
+        {
+            number: 12,
+            title: "Sitting Between Two Prostrations",
+            description: "Say 'Allahu Akbar' and sit up from prostration. Sit on your left foot with your right foot upright. Place your hands on your thighs. In this position, say:",
+            arabic: "رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي",
+            transliteration: "Rabbighfir li, Rabbighfir li",
+            translation: "My Lord, forgive me. My Lord, forgive me."
+        },
+        {
+            number: 13,
+            title: "Second Prostration",
+            description: "Say 'Allahu Akbar' and prostrate again, repeating the same as the first prostration:",
+            arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى",
+            transliteration: "Subhana Rabbiyal A'la",
+            translation: "Glory is to my Lord, the Most High",
+            note: "Repeat at least 3 times. This completes one rakat."
+        },
+        {
+            number: 14,
+            title: "Standing for Second Rakat",
+            description: "Say 'Allahu Akbar' and stand up for the second rakat. Repeat steps 6-13 (from Bismillah through the second prostration).",
+            note: "For the second rakat, recite Al-Fatiha and another surah, then proceed with bowing and prostrations."
+        },
+        {
+            number: 15,
+            title: "Sitting for Tashahhud",
+            description: "After the second prostration of the second rakat, sit and recite the Tashahhud:",
+            arabic: "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+            transliteration: "At-tahiyyatu lillahi was-salawatu wat-tayyibat. As-salamu 'alayka ayyuhan-Nabiyyu wa rahmatullahi wa barakatuhu. As-salamu 'alayna wa 'ala 'ibadillahis-salihin. Ashhadu an la ilaha illallah, wa ashhadu anna Muhammadan 'abduhu wa rasuluh.",
+            translation: "All compliments, prayers and pure words are due to Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no deity except Allah, and I bear witness that Muhammad is His servant and Messenger.",
+            note: "Raise your index finger when saying 'Ashhadu an la ilaha illallah'."
+        },
+        {
+            number: 16,
+            title: "Durood (Blessings on the Prophet)",
+            description: "Continue reciting the Durood Ibrahim:",
+            arabic: "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+            transliteration: "Allahumma salli 'ala Muhammadin wa 'ala ali Muhammad, kama sallayta 'ala Ibraheema wa 'ala ali Ibraheem, innaka hameedun majeed. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammad, kama barakta 'ala Ibraheema wa 'ala ali Ibraheem, innaka hameedun majeed.",
+            translation: "O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon Ibrahim and upon the family of Ibrahim. Indeed, You are Praiseworthy and Glorious. O Allah, send blessings upon Muhammad and upon the family of Muhammad, as You blessed Ibrahim and upon the family of Ibrahim. Indeed, You are Praiseworthy and Glorious."
+        },
+        {
+            number: 17,
+            title: "Final Supplication (Optional)",
+            description: "You may make a brief supplication, such as:",
+            arabic: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+            transliteration: "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar",
+            translation: "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire."
+        },
+        {
+            number: 18,
+            title: "Give Salam (Ending the Prayer)",
+            description: "Turn your head to the right and say:",
+            arabic: "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+            transliteration: "As-salamu 'alaykum wa rahmatullah",
+            translation: "Peace and mercy of Allah be upon you",
+            note: "Then turn your head to the left and repeat the same. This ends the prayer."
+        }
+    ];
+
+    salahContent.innerHTML = prayerIntro;
+
+    steps.forEach(step => {
+        const stepCard = createPrayerStepCard(step);
+        salahContent.appendChild(stepCard);
+    });
+
+    // Add closing note
+    const closingNote = document.createElement('div');
+    closingNote.className = 'prayer-closing-note';
+    closingNote.innerHTML = `
+        <h3>Important Notes:</h3>
+        <ul>
+            <li>For 3-rakat prayers (Maghrib), after the Tashahhud in the 2nd rakat, stand for the 3rd rakat without giving Salam.</li>
+            <li>For 4-rakat prayers (Dhuhr, Asr, Isha), stand after the Tashahhud in the 2nd rakat for the 3rd and 4th rakats.</li>
+            <li>In the 3rd and 4th rakats, only recite Al-Fatiha (not an additional surah).</li>
+            <li>Women should pray with more modesty - keeping elbows close to the body during prostration.</li>
+            <li>Learn pronunciation from a teacher or reliable source to ensure correct recitation.</li>
+        </ul>
+        <p class="encouragement"><strong>May Allah accept your prayers and make them a source of closeness to Him.</strong></p>
+    `;
+    salahContent.appendChild(closingNote);
+}
+
+function createPrayerStepCard(step) {
+    const card = document.createElement('div');
+    card.className = 'prayer-step-card';
+
+    let content = `
+        <div class="step-number">Step ${step.number}</div>
+        <h3 class="step-title">${step.title}</h3>
+        <p class="step-description">${step.description}</p>
+    `;
+
+    if (step.arabic) {
+        content += `<div class="step-arabic">${step.arabic}</div>`;
+    }
+
+    if (step.transliteration) {
+        content += `<div class="step-transliteration">${step.transliteration}</div>`;
+    }
+
+    if (step.translation) {
+        content += `<div class="step-translation">${step.translation}</div>`;
+    }
+
+    if (step.note) {
+        content += `<div class="step-note"><strong>Note:</strong> ${step.note}</div>`;
+    }
+
+    card.innerHTML = content;
+    return card;
+}
+
+// How to Perform Wudu - Complete Ablution Guide
+function loadWuduGuide() {
+    const wuduContent = document.getElementById('wudu-content');
+
+    const wuduIntro = `
+        <div class="wudu-intro-card">
+            <h3>What is Wudu?</h3>
+            <p>Wudu (ablution) is the Islamic procedure for cleansing parts of the body using water. It is a prerequisite for performing Salah and other acts of worship. The Prophet Muhammad (peace be upon him) said: <em>"The key to Paradise is prayer, and the key to prayer is cleanliness."</em></p>
+
+            <h4>Things That Break Wudu:</h4>
+            <ul>
+                <li>Natural discharge (urine, feces, gas)</li>
+                <li>Deep sleep</li>
+                <li>Loss of consciousness</li>
+                <li>Bleeding from wounds</li>
+                <li>Vomiting</li>
+            </ul>
+        </div>
+    `;
+
+    const wuduSteps = [
+        {
+            number: 1,
+            title: "Make Intention (Niyyah)",
+            description: "Make the intention in your heart to perform Wudu for the purpose of purification and prayer. You don't need to say it out loud.",
+            note: "The intention is solely in the heart."
+        },
+        {
+            number: 2,
+            title: "Say Bismillah",
+            description: "Begin by saying:",
+            arabic: "بِسْمِ اللَّهِ",
+            transliteration: "Bismillah",
+            translation: "In the name of Allah"
+        },
+        {
+            number: 3,
+            title: "Wash Both Hands",
+            description: "Wash both hands up to the wrists three times, making sure water reaches between the fingers.",
+            note: "Start with the right hand, then the left."
+        },
+        {
+            number: 4,
+            title: "Rinse the Mouth (Madmadah)",
+            description: "Take water in your right hand, put it in your mouth, swish it around, and spit it out. Repeat three times.",
+            note: "Use the index finger to clean the teeth if possible."
+        },
+        {
+            number: 5,
+            title: "Rinse the Nose (Istinshaq)",
+            description: "Take water in your right hand, sniff it into your nostrils, then blow it out using your left hand. Repeat three times.",
+            note: "Sniff water gently unless you are not fasting."
+        },
+        {
+            number: 6,
+            title: "Wash the Face",
+            description: "Wash your entire face three times from the hairline to the chin and from ear to ear. Make sure water reaches all parts including the beard.",
+            note: "The face includes everything from the forehead to the bottom of the chin."
+        },
+        {
+            number: 7,
+            title: "Wash the Arms",
+            description: "Wash your right arm from the fingertips up to and including the elbow three times. Then do the same with the left arm.",
+            note: "Ensure water reaches the entire arm including the elbow."
+        },
+        {
+            number: 8,
+            title: "Wipe the Head (Masah)",
+            description: "Wet your hands and wipe over your head once, from the front to the back and back to the front.",
+            note: "You only need to wipe the head once, not three times."
+        },
+        {
+            number: 9,
+            title: "Wipe the Ears",
+            description: "With the same water from wiping your head, use your index fingers to wipe the inside of your ears and your thumbs to wipe behind your ears.",
+            note: "This is done once, as part of wiping the head."
+        },
+        {
+            number: 10,
+            title: "Wash the Feet",
+            description: "Wash your right foot up to and including the ankle three times, ensuring water reaches between the toes. Then wash the left foot in the same manner.",
+            note: "Use your little finger to clean between the toes."
+        },
+        {
+            number: 11,
+            title: "Recite the Dua After Wudu",
+            description: "After completing wudu, it is recommended to recite:",
+            arabic: "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ. اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+            transliteration: "Ashhadu an la ilaha illallahu wahdahu la shareeka lah, wa ashhadu anna Muhammadan 'abduhu wa rasuluh. Allahumma-j'alni minat-tawwabina waj-'alni minal-mutatahhirin.",
+            translation: "I bear witness that there is no deity except Allah, alone without partner, and I bear witness that Muhammad is His servant and Messenger. O Allah, make me among those who repent and make me among those who purify themselves.",
+            hadith: "The Prophet (ﷺ) said: 'Whoever performs wudu and perfects it, then says this supplication, the eight gates of Paradise will be opened for him, and he may enter through whichever he wishes.' (Sahih Muslim)"
+        }
+    ];
+
+    wuduContent.innerHTML = wuduIntro;
+
+    wuduSteps.forEach(step => {
+        const stepCard = createWuduStepCard(step);
+        wuduContent.appendChild(stepCard);
+    });
+
+    // Add closing tips
+    const closingTips = document.createElement('div');
+    closingTips.className = 'wudu-closing-tips';
+    closingTips.innerHTML = `
+        <h3>Important Tips:</h3>
+        <ul>
+            <li><strong>Order Matters:</strong> Perform wudu in the correct sequence as taught by the Prophet (ﷺ).</li>
+            <li><strong>Continuity:</strong> Complete wudu without long pauses between steps.</li>
+            <li><strong>Thoroughness:</strong> Ensure water reaches every required part.</li>
+            <li><strong>Conservation:</strong> Don't waste water. The Prophet (ﷺ) used very little water for wudu.</li>
+            <li><strong>Remove Barriers:</strong> Remove nail polish, jewelry that prevents water, and anything that blocks water from reaching the skin.</li>
+            <li><strong>Wiping Over Socks:</strong> If you've performed wudu with socks on, you may wipe over them for up to 24 hours (3 days while traveling) instead of washing the feet.</li>
+        </ul>
+        <p class="wudu-virtue"><strong>The Virtue of Wudu:</strong> The Prophet (ﷺ) said: "When a Muslim performs wudu and washes his face, every sin he committed with his eyes is washed away with the water. When he washes his hands, every sin committed by his hands is washed away with the water. When he washes his feet, every sin committed by his feet is washed away. He then emerges cleansed of sin." (Sahih Muslim)</p>
+    `;
+    wuduContent.appendChild(closingTips);
+}
+
+function createWuduStepCard(step) {
+    const card = document.createElement('div');
+    card.className = 'wudu-step-card';
+
+    let content = `
+        <div class="step-number">Step ${step.number}</div>
+        <h3 class="step-title">${step.title}</h3>
+        <p class="step-description">${step.description}</p>
+    `;
+
+    if (step.arabic) {
+        content += `<div class="step-arabic">${step.arabic}</div>`;
+    }
+
+    if (step.transliteration) {
+        content += `<div class="step-transliteration">${step.transliteration}</div>`;
+    }
+
+    if (step.translation) {
+        content += `<div class="step-translation">${step.translation}</div>`;
+    }
+
+    if (step.hadith) {
+        content += `<div class="step-hadith"><em>${step.hadith}</em></div>`;
+    }
+
+    if (step.note) {
+        content += `<div class="step-note"><strong>Note:</strong> ${step.note}</div>`;
+    }
+
+    card.innerHTML = content;
     return card;
 }
 
