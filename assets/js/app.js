@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize the application
 function initializeApp() {
     setupNavigation();
+    setupSidebarToggle();
     loadQuranContent();
     loadHadithContent();
     loadProphetLessons();
@@ -21,24 +22,91 @@ function initializeApp() {
 // Navigation between sections
 function setupNavigation() {
     const navButtons = document.querySelectorAll('.nav-btn');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
     const sections = document.querySelectorAll('.content-section');
 
+    // Handle main navigation buttons
     navButtons.forEach(button => {
         button.addEventListener('click', function() {
             const targetSection = this.getAttribute('data-section');
-
-            // Remove active class from all buttons and sections
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-
-            // Add active class to clicked button and corresponding section
-            this.classList.add('active');
-            document.getElementById(targetSection).classList.add('active');
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            navigateToSection(targetSection);
         });
     });
+
+    // Handle sidebar navigation links
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = this.getAttribute('data-section');
+            navigateToSection(targetSection);
+            closeSidebar(); // Close sidebar after navigation
+        });
+    });
+
+    // Helper function to navigate to a section
+    function navigateToSection(targetSection) {
+        // Remove active class from all buttons, links, and sections
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        sidebarLinks.forEach(link => link.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Add active class to elements with matching data-section
+        navButtons.forEach(btn => {
+            if (btn.getAttribute('data-section') === targetSection) {
+                btn.classList.add('active');
+            }
+        });
+        sidebarLinks.forEach(link => {
+            if (link.getAttribute('data-section') === targetSection) {
+                link.classList.add('active');
+            }
+        });
+
+        // Show the target section
+        const section = document.getElementById(targetSection);
+        if (section) {
+            section.classList.add('active');
+        }
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Sidebar Toggle Functionality
+function setupSidebarToggle() {
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('right-sidebar');
+    const closeBtn = document.getElementById('sidebar-close');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    // Open sidebar
+    toggleBtn.addEventListener('click', openSidebar);
+
+    // Close sidebar
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Close sidebar on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            closeSidebar();
+        }
+    });
+}
+
+function openSidebar() {
+    const sidebar = document.getElementById('right-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('right-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
 }
 
 // Quran verses with Tafseer Ibn Kathir
