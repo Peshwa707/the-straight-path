@@ -1,0 +1,20 @@
+{
+  "appId": "com.thestraightpath.app",
+  "appName": "The Straight Path",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "android": {
+    "buildOptions": {
+      "keystorePath": "",
+      "keystoreAlias": ""
+    }
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0d7377",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    }
+  }
+}

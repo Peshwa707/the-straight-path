@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">The Straight Path</string>
+    <string name="title_activity_main">The Straight Path</string>
+    <string name="package_name">com.thestraightpath.app</string>
+    <string name="custom_url_scheme">com.thestraightpath.app</string>
+</resources>

@@ -38,3 +38,16 @@ build/
 # Temporary files
 tmp/
 temp/
+
+# Android build artifacts
+android/build/
+android/.gradle/
+android/app/build/
+android/.idea/
+android/local.properties
+android/*.iml
+android/.cxx/
+android/captures/
+
+# Capacitor
+.capacitor/
