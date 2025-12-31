@@ -499,6 +499,190 @@ footer .arabic-text {
     margin: 20px 0;
 }
 
+/* Prayer Guide (Salah) Styling */
+.prayer-intro-card,
+.wudu-intro-card {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--secondary-color);
+}
+
+.prayer-times {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.prayer-time-item {
+    background: var(--background-white);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.prayer-note {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff9e6;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.prayer-step-card,
+.wudu-step-card {
+    background: var(--background-white);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prayer-step-card:hover,
+.wudu-step-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.step-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.step-description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.step-arabic {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    text-align: center;
+    direction: rtl;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f0f8ff;
+    border-radius: 8px;
+    line-height: 2.2;
+    font-weight: 600;
+}
+
+.step-transliteration {
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--secondary-color);
+    font-style: italic;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+.step-translation {
+    font-size: 1.05rem;
+    text-align: center;
+    color: var(--text-dark);
+    margin: 15px 0;
+    padding: 15px;
+    background: var(--background-light);
+    border-radius: 8px;
+}
+
+.step-note {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fff9e6;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    font-size: 1rem;
+}
+
+.step-hadith {
+    margin-top: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.prayer-closing-note,
+.wudu-closing-tips {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe6b3 100%);
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.prayer-closing-note h3,
+.wudu-closing-tips h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.prayer-closing-note ul,
+.wudu-closing-tips ul {
+    margin: 20px 0;
+}
+
+.prayer-closing-note li,
+.wudu-closing-tips li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+
+.encouragement,
+.wudu-virtue {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--background-white);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+.wudu-intro-card h4 {
+    color: var(--secondary-color);
+    margin: 20px 0 10px;
+    font-size: 1.2rem;
+}
+
+.wudu-intro-card ul {
+    list-style: disc;
+    padding-left: 40px;
+    margin: 15px 0;
+}
+
+.wudu-intro-card ul li {
+    padding-left: 0;
+    margin-bottom: 8px;
+}
+
+.wudu-intro-card ul li:before {
+    content: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .logo {
