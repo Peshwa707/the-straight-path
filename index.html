@@ -16,20 +16,6 @@
         </div>
     </header>
 
-    <nav class="main-nav">
-        <div class="container">
-            <button class="nav-btn active" data-section="home">Home</button>
-            <button class="nav-btn" data-section="quran">Quran & Tafseer</button>
-            <button class="nav-btn" data-section="hadith">Hadith Qudsi</button>
-            <button class="nav-btn" data-section="prophet">Prophet's Life</button>
-            <button class="nav-btn" data-section="jesus">Jesus in Quran</button>
-            <button class="nav-btn" data-section="salah">How to Pray Salah</button>
-            <button class="nav-btn" data-section="wudu">How to Do Wudu</button>
-            <button class="nav-btn" data-section="daily">Daily Guidance</button>
-            <button class="nav-btn" data-section="about">About Islam</button>
-        </div>
-    </nav>
-
     <!-- Sidebar Toggle Button -->
     <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sections Menu">
         <span class="toggle-icon">☰</span>
@@ -41,6 +27,36 @@
             <h3>Sections</h3>
             <button id="sidebar-close" class="sidebar-close" aria-label="Close Menu">×</button>
         </div>
+
+        <!-- User Profile Section -->
+        <div id="user-profile-section" class="user-profile-section">
+            <div id="logged-out-view" class="auth-view">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="signup-btn" class="auth-btn">Sign Up</button>
+            </div>
+            <div id="logged-in-view" class="auth-view" style="display: none;">
+                <div class="user-info">
+                    <span class="user-icon">👤</span>
+                    <span id="username-display" class="username"></span>
+                </div>
+                <div class="progress-summary">
+                    <div class="progress-item">
+                        <span class="progress-label">Verses:</span>
+                        <span id="verses-count" class="progress-value">0</span>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">Hadith:</span>
+                        <span id="hadith-count" class="progress-value">0</span>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">Streak:</span>
+                        <span id="streak-count" class="progress-value">0 days</span>
+                    </div>
+                </div>
+                <button id="logout-btn" class="auth-btn logout">Logout</button>
+            </div>
+        </div>
+
         <nav class="sidebar-nav">
             <a href="#" class="sidebar-link active" data-section="home">
                 <span class="link-icon">🏠</span>
@@ -294,6 +310,56 @@
         </div>
     </footer>
 
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <p class="form-message" id="login-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Create Account</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" required minlength="6">
+                </div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+                <p class="form-message" id="signup-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/storage.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/auth.js"></script>
 </body>
 </html>

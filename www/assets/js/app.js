@@ -21,17 +21,8 @@ function initializeApp() {
 
 // Navigation between sections
 function setupNavigation() {
-    const navButtons = document.querySelectorAll('.nav-btn');
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
     const sections = document.querySelectorAll('.content-section');
-
-    // Handle main navigation buttons
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetSection = this.getAttribute('data-section');
-            navigateToSection(targetSection);
-        });
-    });
 
     // Handle sidebar navigation links
     sidebarLinks.forEach(link => {
@@ -45,17 +36,11 @@ function setupNavigation() {
 
     // Helper function to navigate to a section
     function navigateToSection(targetSection) {
-        // Remove active class from all buttons, links, and sections
-        navButtons.forEach(btn => btn.classList.remove('active'));
+        // Remove active class from all links and sections
         sidebarLinks.forEach(link => link.classList.remove('active'));
         sections.forEach(section => section.classList.remove('active'));
 
         // Add active class to elements with matching data-section
-        navButtons.forEach(btn => {
-            if (btn.getAttribute('data-section') === targetSection) {
-                btn.classList.add('active');
-            }
-        });
         sidebarLinks.forEach(link => {
             if (link.getAttribute('data-section') === targetSection) {
                 link.classList.add('active');

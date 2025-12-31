@@ -60,50 +60,6 @@ header {
     opacity: 0.95;
 }
 
-/* Navigation */
-.main-nav {
-    background: var(--background-white);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    margin-bottom: 30px;
-}
-
-.main-nav .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 20px;
-}
-
-.nav-btn {
-    background: var(--background-light);
-    color: var(--text-dark);
-    border: 2px solid var(--border-color);
-    padding: 12px 24px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-    background: var(--primary-color);
-    color: var(--text-light);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-
-.nav-btn.active {
-    background: var(--secondary-color);
-    color: var(--text-light);
-    border-color: var(--secondary-color);
-}
-
 /* Main Content */
 main {
     padding: 30px 0;
@@ -691,14 +647,6 @@ footer .arabic-text {
 
     .subtitle {
         font-size: 1.5rem;
-    }
-
-    .main-nav .container {
-        flex-direction: column;
-    }
-
-    .nav-btn {
-        width: 100%;
     }
 
     .pillars-grid {
