@@ -9,16 +9,18 @@ const path = require('path');
 // Import database connection
 const connectDB = require('./config/database');
 
-// Import routes
-const authRoutes = require('./routes/auth');
-const progressRoutes = require('./routes/progress');
-const notesRoutes = require('./routes/notes');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Connect to database
-connectDB();
+// Connect to database (optional - app will work without it)
+let isDBConnected = false;
+connectDB().then(() => {
+    isDBConnected = true;
+}).catch(err => {
+    console.log('⚠️  Running in frontend-only mode (database not available)');
+    console.log('📖 All Islamic content sections are fully functional');
+    console.log('💡 User accounts, progress tracking, and notes are disabled');
+});
 
 // Body parser middleware
 app.use(express.json());
@@ -45,12 +47,19 @@ const sessionConfig = {
     }
 };
 
-// Use MongoDB for session storage if connected
+// Use MongoDB for session storage only if MONGODB_URI is provided
 if (process.env.MONGODB_URI) {
-    sessionConfig.store = MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI,
-        touchAfter: 24 * 3600 // lazy session update (24 hours)
-    });
+    try {
+        sessionConfig.store = MongoStore.create({
+            mongoUrl: process.env.MONGODB_URI,
+            touchAfter: 24 * 3600 // lazy session update (24 hours)
+        });
+        console.log('📦 Using MongoDB for session storage');
+    } catch (err) {
+        console.log('⚠️  Using memory store for sessions (not recommended for production)');
+    }
+} else {
+    console.log('📦 Using memory store for sessions (frontend-only mode)');
 }
 
 app.use(session(sessionConfig));
@@ -63,16 +72,45 @@ app.use((req, res, next) => {
     next();
 });
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/progress', progressRoutes);
-app.use('/api/notes', notesRoutes);
+// API Routes - only load if database features are available
+if (process.env.MONGODB_URI) {
+    // Import routes only when database is configured
+    const authRoutes = require('./routes/auth');
+    const progressRoutes = require('./routes/progress');
+    const notesRoutes = require('./routes/notes');
+
+    app.use('/api/auth', authRoutes);
+    app.use('/api/progress', progressRoutes);
+    app.use('/api/notes', notesRoutes);
+} else {
+    // Provide informative message for API routes when database is not available
+    app.use('/api/auth/*', (req, res) => {
+        res.status(503).json({
+            success: false,
+            message: 'Database features are not available. The app is running in frontend-only mode.'
+        });
+    });
+    app.use('/api/progress/*', (req, res) => {
+        res.status(503).json({
+            success: false,
+            message: 'Database features are not available. The app is running in frontend-only mode.'
+        });
+    });
+    app.use('/api/notes/*', (req, res) => {
+        res.status(503).json({
+            success: false,
+            message: 'Database features are not available. The app is running in frontend-only mode.'
+        });
+    });
+}
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({
         success: true,
         message: 'Server is running',
+        mode: process.env.MONGODB_URI ? 'Full-stack' : 'Frontend-only',
+        database: isDBConnected ? 'Connected' : 'Not connected',
         timestamp: new Date().toISOString()
     });
 });

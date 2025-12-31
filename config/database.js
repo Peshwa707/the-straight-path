@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
+    // If no MONGODB_URI is provided, skip database connection
+    if (!process.env.MONGODB_URI) {
+        console.log('ℹ️  No MONGODB_URI found - skipping database connection');
+        return Promise.reject(new Error('No database configured'));
+    }
+
     try {
-        const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/the-straight-path';
+        const mongoURI = process.env.MONGODB_URI;
 
         const options = {
             useNewUrlParser: true,
@@ -35,8 +41,8 @@ const connectDB = async () => {
         return conn;
     } catch (error) {
         console.error(`❌ Error connecting to MongoDB: ${error.message}`);
-        // Don't exit process, allow app to run without database (optional)
-        // process.exit(1);
+        // Don't exit process, allow app to run without database
+        return Promise.reject(error);
     }
 };
 
