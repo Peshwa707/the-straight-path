@@ -146,14 +146,47 @@
         <!-- Quran & Tafseer Section -->
         <section id="quran" class="content-section">
             <h2>Quran and Tafseer Ibn Kathir</h2>
-            <p class="section-intro">The Holy Quran is the word of Allah revealed to Prophet Muhammad (peace be upon him). Below are selected verses with commentary from the renowned scholar Ibn Kathir.</p>
+            <p class="section-intro">The Holy Quran is the word of Allah revealed to Prophet Muhammad (peace be upon him). Read with Tafsir from Ibn Kathir, create flashcards for memorization, and bookmark your progress.</p>
 
-            <div class="search-box">
-                <input type="text" id="quran-search" placeholder="Search Quran verses...">
+            <!-- Quran Navigation Tabs -->
+            <div class="quran-tabs">
+                <button class="quran-tab-btn active" data-tab="reader">📖 Read Quran</button>
+                <button class="quran-tab-btn" data-tab="bookmarks">🔖 My Bookmarks (<span id="bookmark-count">0</span>)</button>
+                <button class="quran-tab-btn" data-tab="flashcards">🎴 My Flashcards (<span id="flashcard-count">0</span>)</button>
             </div>
 
-            <div id="quran-content" class="verses-container">
-                <!-- Dynamic content will be loaded here -->
+            <!-- Quran Reader Tab -->
+            <div id="quran-reader-tab" class="quran-tab-content active">
+                <!-- Surah Selector -->
+                <div class="surah-selector-container">
+                    <label for="surah-selector"><strong>Select Surah:</strong></label>
+                    <select id="surah-selector" class="surah-selector">
+                        <option value="">Choose a Surah...</option>
+                    </select>
+                </div>
+
+                <!-- Verses Display -->
+                <div id="quran-content" class="verses-container">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Bookmarks Tab -->
+            <div id="quran-bookmarks-tab" class="quran-tab-content">
+                <div id="bookmarks-container" class="bookmarks-container">
+                    <p class="empty-state">No bookmarks yet. Start reading and bookmark verses to save your progress!</p>
+                </div>
+            </div>
+
+            <!-- Flashcards Tab -->
+            <div id="quran-flashcards-tab" class="quran-tab-content">
+                <div class="flashcard-controls">
+                    <button id="start-review-btn" class="flashcard-btn">Start Review Session</button>
+                    <button id="view-all-cards-btn" class="flashcard-btn secondary">View All Cards</button>
+                </div>
+                <div id="flashcards-container" class="flashcards-container">
+                    <p class="empty-state">No flashcards yet. Create flashcards from verses to help with memorization!</p>
+                </div>
             </div>
         </section>
 
@@ -358,6 +391,7 @@
         </div>
     </div>
 
+    <script src="assets/js/quran-data.js"></script>
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/auth.js"></script>

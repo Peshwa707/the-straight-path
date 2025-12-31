@@ -1120,3 +1120,449 @@ footer .arabic-text {
         font-size: 1.5rem;
     }
 }
+
+/* ================================
+   Quran Section - Enhanced Features
+   ================================ */
+
+/* Quran Tabs */
+.quran-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    border-bottom: 2px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.quran-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quran-tab-btn:hover {
+    background: var(--background-light);
+    border-bottom-color: var(--secondary-color);
+}
+
+.quran-tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.quran-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.quran-tab-content.active {
+    display: block;
+}
+
+/* Surah Selector */
+.surah-selector-container {
+    margin: 25px 0;
+    padding: 20px;
+    background: var(--background-white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.surah-selector {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.surah-selector:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1);
+}
+
+/* Verse Cards with Actions */
+.verse-card-enhanced {
+    background: var(--background-white);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.verse-card-enhanced:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.verse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.verse-reference {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.verse-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.verse-action-btn {
+    background: var(--background-light);
+    border: 2px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.verse-action-btn:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.verse-action-btn.bookmarked {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+.verse-arabic-text {
+    font-size: 2rem;
+    line-height: 2.5;
+    text-align: right;
+    direction: rtl;
+    color: var(--primary-color);
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(13, 115, 119, 0.05) 0%, rgba(20, 160, 133, 0.05) 100%);
+    border-radius: 8px;
+}
+
+.verse-transliteration {
+    font-style: italic;
+    color: #666;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-left: 3px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.verse-translation-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 15px 0;
+    color: var(--text-dark);
+}
+
+.verse-tafsir {
+    background: #fff8e1;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    margin-top: 20px;
+}
+
+.verse-tafsir h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.verse-tafsir-text {
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Bookmarks Display */
+.bookmarks-container,
+.flashcards-container {
+    margin-top: 20px;
+}
+
+.bookmark-item {
+    background: var(--background-white);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.bookmark-item:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.bookmark-info h4 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.bookmark-meta {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.bookmark-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-go-to,
+.btn-delete {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-go-to {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.btn-go-to:hover {
+    background: var(--secondary-color);
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: var(--text-light);
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* Flashcard Styles */
+.flashcard-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.flashcard-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-light);
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flashcard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(13, 115, 119, 0.3);
+}
+
+.flashcard-btn.secondary {
+    background: var(--background-light);
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+}
+
+.flashcard-btn.secondary:hover {
+    background: var(--background-white);
+    border-color: var(--primary-color);
+}
+
+.flashcard {
+    background: var(--background-white);
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.flashcard:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-hover);
+}
+
+.flashcard.flipped .flashcard-front {
+    display: none;
+}
+
+.flashcard.flipped .flashcard-back {
+    display: block;
+}
+
+.flashcard-front,
+.flashcard-back {
+    text-align: center;
+}
+
+.flashcard-back {
+    display: none;
+}
+
+.flashcard-arabic {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    direction: rtl;
+    line-height: 2.2;
+    margin-bottom: 15px;
+}
+
+.flashcard-translation {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.flashcard-meta {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flashcard-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stat-badge {
+    background: var(--background-light);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.mastered-badge {
+    background: #27ae60;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.flashcard-review-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.review-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.review-btn.mastered {
+    background: #27ae60;
+    color: white;
+}
+
+.review-btn.not-yet {
+    background: #e67e22;
+    color: white;
+}
+
+.review-btn.delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1.1rem;
+}
+
+/* Responsive Quran Styles */
+@media (max-width: 768px) {
+    .verse-arabic-text {
+        font-size: 1.6rem;
+    }
+
+    .verse-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .flashcard-controls {
+        flex-direction: column;
+    }
+
+    .flashcard-btn {
+        width: 100%;
+    }
+
+    .bookmark-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .bookmark-actions {
+        width: 100%;
+    }
+
+    .btn-go-to,
+    .btn-delete {
+        flex: 1;
+    }
+}
